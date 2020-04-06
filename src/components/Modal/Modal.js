@@ -2,16 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Form from '../Form/Form';
 import Title from '../Title/Title';
-
-const Blocker = styled.div`
-z-index: 1;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  background-color: rgba(0, 0, 0, 0.7);
-`;
+import Blocker from './Blocker';
 
 const Wrapper = styled.div`
 z-index: 2;
@@ -42,7 +33,6 @@ const CloseButton = styled.button`
 
 const Modal = ({ closeModalFn }) => (
   <div>
-      
     <Blocker onClick={closeModalFn} />
     <Wrapper>
       <CloseButton onClick={closeModalFn}>⨉</CloseButton>

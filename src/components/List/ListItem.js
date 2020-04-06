@@ -4,8 +4,10 @@ import Icon from '@material-ui/core/Icon';
 import IconWrapper from '../IconWrapper/IconWrapper';
 import Header from '../Header/Header';
 import AppContext from '../../context';
+import ListItemButtons from './ListItemButtons';
 
 const Wrapper = styled.div`
+  position: relative;
   width: 200px;
   text-align: center;
   margin-bottom: 20px;
@@ -30,6 +32,12 @@ const Counter = styled.span`
   font-size: 1rem;
 `;
 
+const CounterDanger = styled.span`
+  text-align: center;
+  font-size: 1rem;
+  color: red;
+`;
+
 const MaterialIcon = styled(Icon)`
   top: 0;
   left: 0;
@@ -38,18 +46,23 @@ const MaterialIcon = styled(Icon)`
   transform: translate(-50%, -50%);
 `;
 
-const ListItem = ({id, category, name, quantity, icon }) => (
+const ListItem = ({ id, category, name, quantity, icon, criticalValue }) => (
   <AppContext.Consumer>
     {(context) => (
       <Wrapper>
+        <ListItemButtons id={id} />
         <IconWrapper icon={icon} />
         <Header>{name}</Header>
         <ButtonRow>
           <Button onClick={() => context.decrementQuantity(id)}>
             <MaterialIcon>remove_circle</MaterialIcon>
           </Button>
-          <Counter>{quantity}</Counter>
-          <Button  onClick={() => context.incrementQuantity(id)}>
+          {quantity <= criticalValue ? (
+            <CounterDanger>{quantity}</CounterDanger>
+          ) : (
+            <Counter>{quantity}</Counter>
+          )}
+          <Button onClick={() => context.incrementQuantity(id)}>
             <MaterialIcon>add_circle</MaterialIcon>
           </Button>
         </ButtonRow>

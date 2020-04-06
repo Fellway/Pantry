@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.h1`
     font-size: 2rem;
-    margin: 40px 0;
+    margin: 20px 0;
     letter-spacing: 4px;
 `;
 

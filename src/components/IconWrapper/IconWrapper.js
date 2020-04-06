@@ -8,7 +8,7 @@ const Image = styled.img`
 `;
 
 const IconWrapper = ({ children, icon }) => (
-  <Image src={icon} alt="{children}" />
+  <Image src={icon} alt="icon" />
 );
 
 export default IconWrapper;
